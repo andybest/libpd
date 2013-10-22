@@ -477,4 +477,10 @@ static NSTimer *midiPollTimer;
   }
 }
 
++ (void)processBlock:(void(^)(void))block {
+    @synchronized(self) {
+        block();
+    }
+}
+
 @end

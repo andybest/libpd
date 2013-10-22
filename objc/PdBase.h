@@ -141,5 +141,6 @@
 + (int)sendMidiByte:(int)port byte:(int)byte;
 + (int)sendSysex:(int)port byte:(int)byte;
 + (int)sendSysRealTime:(int)port byte:(int)byte;
++ (void)processBlock:(void(^)(void))block;
 
 @end
