@@ -76,30 +76,30 @@ void array_resize(t_array *x, int n)
 
     x->a_vec = (char *)resizebytes(x->a_vec, oldn * elemsize, n * elemsize);
     x->a_n = n;
-    if (n > oldn)
-    {
-        char *cp = x->a_vec + elemsize * oldn;
-        int i = n - oldn;
-        for (; i--; cp += elemsize)
-        {
-            t_word *wp = (t_word *)cp;
-            word_init(wp, template, &x->a_gp);
-        }
-    }
+//    if (n > oldn)
+//    {
+//        char *cp = x->a_vec + elemsize * oldn;
+//        int i = n - oldn;
+//        for (; i--; cp += elemsize)
+//        {
+//            t_word *wp = (t_word *)cp;
+//            word_init(wp, template, &x->a_gp);
+//        }
+//    }
     x->a_valid = ++glist_valid;
 }
 
 static void array_resize_and_redraw(t_array *array, t_glist *glist, int n)
 {
-    t_array *a2 = array;
-    int vis = glist_isvisible(glist);
-    while (a2->a_gp.gp_stub->gs_which == GP_ARRAY)
-        a2 = a2->a_gp.gp_stub->gs_un.gs_array;
-    if (vis)
-        gobj_vis(&a2->a_gp.gp_un.gp_scalar->sc_gobj, glist, 0);
+//    t_array *a2 = array;
+//    int vis = glist_isvisible(glist);
+//    while (a2->a_gp.gp_stub->gs_which == GP_ARRAY)
+//        a2 = a2->a_gp.gp_stub->gs_un.gs_array;
+//    if (vis)
+//        gobj_vis(&a2->a_gp.gp_un.gp_scalar->sc_gobj, glist, 0);
     array_resize(array, n);
-    if (vis)
-        gobj_vis(&a2->a_gp.gp_un.gp_scalar->sc_gobj, glist, 1);
+//    if (vis)
+//        gobj_vis(&a2->a_gp.gp_un.gp_scalar->sc_gobj, glist, 1);
 }
 
 void word_free(t_word *wp, t_template *template);
@@ -1468,15 +1468,15 @@ int garray_ambigendian(void)
 void garray_resize_long(t_garray *x, long n)
 {
     t_array *array = garray_getarray(x);
-    t_glist *gl = x->x_glist;
-    if (n < 1)
-        n = 1;
-    garray_fittograph(x, n, template_getfloat(
-        template_findbyname(x->x_scalar->sc_template),
-            gensym("style"), x->x_scalar->sc_vec, 1));
+//    t_glist *gl = x->x_glist;
+//    if (n < 1)
+//        n = 1;
+//    garray_fittograph(x, n, template_getfloat(
+//        template_findbyname(x->x_scalar->sc_template),
+//            gensym("style"), x->x_scalar->sc_vec, 1));
     array_resize_and_redraw(array, x->x_glist, n);
-    if (x->x_usedindsp)
-        canvas_update_dsp();
+//    if (x->x_usedindsp)
+//        canvas_update_dsp();
 }
 
     /* float version to use as Pd method */
